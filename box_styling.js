@@ -44,4 +44,4 @@
 	}
 
 customElements.define("com-alex-khobotov-box-styling", AlexBoxStylingPanel);
-})
+})();
