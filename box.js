@@ -50,7 +50,7 @@
 		['TR', 'Load Transactional Data to IBP',
 		 null, new Date(2022, 0, 14), daysToMilliseconds(3), 25, 'Upgrade,MD'],
 		['MD', 'Load Master Data to IBP',
-		 null, new Date(2022, 0, 14), daysToMilliseconds(1), 100, 'Upgrade']
+		new Date(2022, 0, 10), new Date(2022, 0, 11), daysToMilliseconds(1), 100, 'Upgrade']
 	      ]);
 
 	      var options = {
