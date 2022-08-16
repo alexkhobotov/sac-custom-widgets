@@ -67,7 +67,7 @@
 		constructor() {
 			super(); 
 			shadowRoot = this.attachShadow({mode: "open"});
-			shadowRoot.appendChild(googleloaderjs);
+			//shadowRoot.appendChild(googleloaderjs);
 			shadowRoot.appendChild(template.content.cloneNode(true));
 			
 			//create div for google chart
@@ -98,11 +98,13 @@
 			//google.charts.load('current', {'packages':['gantt']});
    			//google.charts.setOnLoadCallback(drawChart);
 			
-
-                    	loadScript(ganttjs, function() {
-                        	console.log("Load:" + ganttjs);
-                       		GoogleChart();
-                    	});
+			loadScript(googleloaderjs, function(){
+				console.log("Load:" + googleloaderjs);
+				loadScript(ganttjs, function() {
+					console.log("Load:" + ganttjs);
+					GoogleChart();
+				});
+			});
 		}
 	}
 
