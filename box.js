@@ -63,7 +63,7 @@
 	
 	// Google Chart
     	function GoogleChart()
-		google.charts.setOnLoadCallback(function() {drawChart()})
+		google.charts.setOnLoadCallback(function() {drawChart()});
     	};
 
 	class AlexBox extends HTMLElement {
