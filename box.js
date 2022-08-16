@@ -36,6 +36,7 @@
 	      var data = new google.visualization.DataTable();
 	      data.addColumn('string', 'Task ID');
 	      data.addColumn('string', 'Task Name');
+		  data.addColumn('string', 'Resource');
 	      data.addColumn('date', 'Start Date');
 	      data.addColumn('date', 'End Date');
 	      data.addColumn('number', 'Duration');
@@ -43,13 +44,13 @@
 	      data.addColumn('string', 'Dependencies');
 
 	      data.addRows([
-		['Upgrade_tst', 'Upgrade IBP PROD',
+		['Upgrade_tst', 'Upgrade IBP PROD', 'system',
 		 new Date(2022, 0, 1), new Date(2022, 0, 5), null,  100,  null],
-		['Upgrade', 'Upgrade IBP PROD',
+		['Upgrade', 'Upgrade IBP PROD', 'system',
 		 new Date(2022, 0, 5), new Date(2022, 0, 10), null,  100,  'Upgrade_tst'],
-		['TR', 'Load Transactional Data to IBP',
+		['TR', 'Load Transactional Data to IBP', 'data load',
 		 null, new Date(2022, 0, 14), daysToMilliseconds(3), 25, 'Upgrade,MD'],
-		['MD', 'Load Master Data to IBP',
+		['MD', 'Load Master Data to IBP', 'data load',
 		new Date(2022, 0, 10), new Date(2022, 0, 11), daysToMilliseconds(1), 100, 'Upgrade']
 	      ]);
 
