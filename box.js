@@ -27,6 +27,8 @@
       		return days * 24 * 60 * 60 * 1000;
     	}
 	
+	
+	
 	function drawChart() {
 	      var data = new google.visualization.DataTable();
 	      data.addColumn('string', 'Task ID');
@@ -60,8 +62,8 @@
     	}
 	
 	// Google Chart
-    	function GoogleChart() {
-        	google.charts.setOnLoadCallback(drawChart());
+    	function GoogleChart()
+		google.charts.setOnLoadCallback(function() {drawChart()})
     	};
 
 	class AlexBox extends HTMLElement {
