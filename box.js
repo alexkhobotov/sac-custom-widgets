@@ -7,6 +7,9 @@
 		</style> 
 	`;
 	
+	const div = document.createElement('div');
+        div.innerHTML = '<div id="chart_div"></div>';
+	
 	//let googleloaderjs = document.createElement("script");
     	//googleloaderjs.src = "https://www.gstatic.com/charts/loader.js";
 	let googleloaderjs = "https://www.gstatic.com/charts/loader.js";
@@ -56,9 +59,9 @@
 		height: 275
 	      };
 		
-		console.log(document.getElementById('chart_div'));
+		console.log(div);
 
-	      var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
+	      var chart = new google.visualization.Gantt(div);
 
 	      chart.draw(data, options);
     	}
@@ -76,8 +79,6 @@
 			shadowRoot.appendChild(template.content.cloneNode(true));
 			
 			//create div for google chart
-			const div = document.createElement('div');
-                	div.innerHTML = '<div id="chart_div"></div>';
                 	shadowRoot.appendChild(div);
 			
 			this.addEventListener("click", event => {
