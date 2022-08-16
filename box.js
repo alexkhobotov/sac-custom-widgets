@@ -47,12 +47,10 @@
 		 new Date(2022, 0, 1), new Date(2022, 0, 5), null,  100,  null],
 		['TR', 'Load Transactional Data to IBP',
 		 null, new Date(2022, 0, 9), daysToMilliseconds(3), 25, 'Upgrade,MD'],
-		['Cite', 'Create bibliography',
-		 null, new Date(2022, 0, 7), daysToMilliseconds(1), 20, 'Research'],
-		['Complete', 'Hand in paper',
-		 null, new Date(2022, 0, 10), daysToMilliseconds(1), 0, 'Cite,Write'],
+		['Patch', 'Apply Patch',
+		 null, new Date(2022, 0, 7), daysToMilliseconds(1), 20, 'Upgrade],
 		['MD', 'Load Master Data to IBP',
-		 null, new Date(2022, 0, 6), daysToMilliseconds(1), 100, 'Research']
+		 null, new Date(2022, 0, 6), daysToMilliseconds(1), 100, 'Upgrade']
 	      ]);
 
 	      var options = {
