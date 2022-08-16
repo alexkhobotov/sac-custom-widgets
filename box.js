@@ -7,8 +7,9 @@
 		</style> 
 	`;
 	
-	let googleloaderjs = document.createElement("script");
-    	googleloaderjs.src = "https://www.gstatic.com/charts/loader.js";
+	//let googleloaderjs = document.createElement("script");
+    	//googleloaderjs.src = "https://www.gstatic.com/charts/loader.js";
+	let googleloaderjs = "https://www.gstatic.com/charts/loader.js";
 	
 	let ganttjs = "https://alexkhobotov.github.io/sac-custom-widgets/gantt.js"
 	
