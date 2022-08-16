@@ -48,7 +48,7 @@
 		['TR', 'Load Transactional Data to IBP',
 		 null, new Date(2022, 0, 9), daysToMilliseconds(3), 25, 'Upgrade,MD'],
 		['Patch', 'Apply Patch',
-		 null, new Date(2022, 0, 7), daysToMilliseconds(1), 20, 'Upgrade],
+		 null, new Date(2022, 0, 7), daysToMilliseconds(1), 20, 'Upgrade'],
 		['MD', 'Load Master Data to IBP',
 		 null, new Date(2022, 0, 6), daysToMilliseconds(1), 100, 'Upgrade']
 	      ]);
