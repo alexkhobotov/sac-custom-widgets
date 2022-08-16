@@ -43,14 +43,16 @@
 	      data.addColumn('string', 'Dependencies');
 
 	      data.addRows([
-		['Upgrade', 'Upgrade IBP PROD',
+		['Upgrade_tst', 'Upgrade IBP PROD',
 		 new Date(2022, 0, 1), new Date(2022, 0, 5), null,  100,  null],
+		['Upgrade', 'Upgrade IBP PROD',
+		 new Date(2022, 0, 5), new Date(2022, 0, 10), null,  100,  'Upgrade_tst'],
 		['TR', 'Load Transactional Data to IBP',
-		 null, new Date(2022, 0, 9), daysToMilliseconds(3), 25, 'Upgrade,MD'],
+		 null, new Date(2022, 0, 14), daysToMilliseconds(3), 25, 'Upgrade,MD'],
 		['Patch', 'Apply Patch',
-		 null, new Date(2022, 0, 7), daysToMilliseconds(1), 20, 'Upgrade'],
+		 null, new Date(2022, 0, 1), daysToMilliseconds(1), 20, 'Upgrade'],
 		['MD', 'Load Master Data to IBP',
-		 null, new Date(2022, 0, 6), daysToMilliseconds(1), 100, 'Upgrade']
+		 null, new Date(2022, 0, 10), daysToMilliseconds(1), 100, 'Upgrade']
 	      ]);
 
 	      var options = {
