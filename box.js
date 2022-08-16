@@ -62,8 +62,8 @@
     	}
 	
 	// Google Chart
-    	function GoogleChart()
-		google.charts.setOnLoadCallback(function(){drawChart();});
+    	function GoogleChart(){
+		google.charts.setOnLoadCallback(function(){ drawChart() });
     	}
 
 	class AlexBox extends HTMLElement {
