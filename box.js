@@ -66,7 +66,7 @@
 	class AlexBox extends HTMLElement {
 		constructor() {
 			super(); 
-			let shadowRoot = this.attachShadow({mode: "open"});
+			shadowRoot = this.attachShadow({mode: "open"});
 			shadowRoot.appendChild(googleloaderjs);
 			shadowRoot.appendChild(template.content.cloneNode(true));
 			
