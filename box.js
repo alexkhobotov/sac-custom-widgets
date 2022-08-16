@@ -10,7 +10,9 @@
 	let googleloaderjs = document.createElement("script");
     	googleloaderjs.src = "https://www.gstatic.com/charts/loader.js";
 	
-	/*
+	let ganttjs = "https://alexkhobotov.github.io/sac-custom-widgets/gantt.js"
+	
+	
 	function loadScript(src, callback) {
 		const script = document.createElement('script');
 		script.type = 'text/javascript';
@@ -18,7 +20,7 @@
 		script.addEventListener("load", callback);
 		shadowRoot.appendChild(script);
     	};
-	*/
+	
 	
 	function daysToMilliseconds(days) {
       		return days * 24 * 60 * 60 * 1000;
@@ -55,6 +57,11 @@
 
 	      chart.draw(data, options);
     	}
+	
+	// Google Chart
+    	function GoogleChart() {
+        	google.charts.setOnLoadCallback(drawChart());
+    	};
 
 	class AlexBox extends HTMLElement {
 		constructor() {
@@ -88,8 +95,14 @@
 				this.style["opacity"] = changedProperties["opacity"];
 			}
 			
-			google.charts.load('current', {'packages':['gantt']});
-   			google.charts.setOnLoadCallback(drawChart);
+			//google.charts.load('current', {'packages':['gantt']});
+   			//google.charts.setOnLoadCallback(drawChart);
+			
+
+                    	loadScript(ganttjs, function() {
+                        	console.log("Load:" + ganttjs);
+                       		GoogleChart();
+                    	});
 		}
 	}
 
