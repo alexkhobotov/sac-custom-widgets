@@ -20,7 +20,7 @@
 		script.src = src;
 		script.addEventListener("load", callback);
 		shadowRoot.appendChild(script);
-    	};
+    	}
 	
 	
 	function daysToMilliseconds(days) {
@@ -63,8 +63,8 @@
 	
 	// Google Chart
     	function GoogleChart()
-		google.charts.setOnLoadCallback(function() {drawChart()});
-    	};
+		google.charts.setOnLoadCallback(function(){drawChart();});
+    	}
 
 	class AlexBox extends HTMLElement {
 		constructor() {
