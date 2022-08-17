@@ -71,10 +71,6 @@
 		google.charts.setOnLoadCallback(function(){ drawChart() });
     }
 
-	async function loadDataBinding(){
-		dataBinding = await this.myDataBinding;
-	}
-
 	class AlexBox extends HTMLElement {
 		constructor() {
 			super(); 
@@ -116,13 +112,18 @@
 				});
 			});
 
-			loadDataBinding();
-			console.log(dataBinding);
-			// Traverse result set
-			dataBinding.data.forEach(row => {
+			let load_promise = new Promise(function(resolve, reject) {
+				this.myDataBinding;
+				resolve("loaded");
+			})
+
+			load_promise.then(() => {
+				console.log(this.myDataBinding);
+				// Traverse result set
+				this.myDataBinding.data.forEach(row => {
 				console.log(row);
-  			})
-  
+  				})
+			});
 		}
 	}
 
