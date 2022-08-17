@@ -150,9 +150,9 @@
 			const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
 			var ds_name = await dataBinding.getDataSource();
 			console.log(ds_name);
-			var bindingData = await dataBinding.data;
-			console.log(bindingData);
-			await bindingData.forEach(row => {
+			//var bindingData = await dataBinding.data;
+			//console.log(bindingData);
+			await this.myDataBinding.data.forEach(row => {
 				console.log(row);
 			  })
 		}
