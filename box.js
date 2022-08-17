@@ -71,6 +71,11 @@
 		google.charts.setOnLoadCallback(function(){ drawChart() });
     }
 
+	async function loadData(){
+		dataBinding = await this.dataBindings.getDataBinding('myDataBinding');
+		console.log(dataBinding);
+	}
+
 	class AlexBox extends HTMLElement {
 		constructor() {
 			super(); 
@@ -112,6 +117,11 @@
 				});
 			});
 
+			loadData();
+			console.log('after load');
+			console.log(dataBinding);
+			/*
+
 			var that = this;
 
 			let load_promise = new Promise(function(resolve, reject) {
@@ -127,6 +137,7 @@
 				console.log(row);
   				})
 			});
+			*/
 		}
 	}
 
