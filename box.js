@@ -1,5 +1,6 @@
 (function() { 
 	let shadowRoot;
+	let dataBinding;
 	
 	let template = document.createElement("template");
 	template.innerHTML = `
@@ -23,7 +24,7 @@
 		script.src = src;
 		script.addEventListener("load", callback);
 		shadowRoot.appendChild(script);
-    	}
+    }
 	
 	
 	function daysToMilliseconds(days) {
@@ -66,9 +67,13 @@
     	}
 	
 	// Google Chart
-    	function GoogleChart(){
+    function GoogleChart(){
 		google.charts.setOnLoadCallback(function(){ drawChart() });
-    	}
+    }
+
+	async function loadDataBinding(){
+		dataBinding = await this.myDataBinding;
+	}
 
 	class AlexBox extends HTMLElement {
 		constructor() {
@@ -111,9 +116,10 @@
 				});
 			});
 
-			console.log(this.myDataBinding);
+			loadDataBinding();
+			console.log(dataBinding);
 			// Traverse result set
-			this.myDataBinding.data.forEach(row => {
+			dataBinding.data.forEach(row => {
 				console.log(row);
   			})
   
