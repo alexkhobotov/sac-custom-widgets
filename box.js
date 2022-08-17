@@ -112,9 +112,10 @@
 				});
 			});
 
+			var that = this;
+
 			let load_promise = new Promise(function(resolve, reject) {
-				this = that;
-				dataBinding = this.dataBindings.getDataBinding('myDataBinding');
+				dataBinding = that.dataBindings.getDataBinding('myDataBinding');
 				resolve("loaded");
 			})
 
