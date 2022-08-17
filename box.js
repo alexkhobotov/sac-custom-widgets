@@ -122,8 +122,11 @@
 			let dataBindings;
 			let dataBinding;
 			let bindingData;
+
+			var that = this;
+
 			new Promise(function(resolve, reject) {
-				dataBindings = this.dataBindings;
+				dataBindings = that.dataBindings;
 				console.log("Bindings loaded");
 			  }).then(function() {
 				dataBinding = dataBindings.getDataBinding('myDataBinding');
