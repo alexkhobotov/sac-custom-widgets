@@ -152,7 +152,8 @@
 			//console.log(ds_name);
 			//var bindingData = await dataBinding.data;
 			//console.log(bindingData);
-			await this.myDataBinding.data.forEach(row => {
+			//await 
+			this.myDataBinding.data.forEach(row => {
 				console.log(row);
 			  })
 		}
