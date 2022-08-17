@@ -1,7 +1,5 @@
 (function() { 
 	let shadowRoot;
-	const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
-	let ds = await dataBinding.getDataSource();
 	
 	let template = document.createElement("template");
 	template.innerHTML = `
@@ -31,6 +29,14 @@
 	function daysToMilliseconds(days) {
       		return days * 24 * 60 * 60 * 1000;
     	}
+
+	async function loadData(){
+		const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
+		let ds = await dataBinding.getDataSource();
+		dataBinding.data.forEach(row => {
+			console.log(row);
+		  })
+	}
 	
 	
 	
@@ -113,9 +119,7 @@
 				});
 			});
 
-			dataBinding.data.forEach(row => {
-				console.log(row);
-  			})
+			loadData();
 		}
 	}
 
