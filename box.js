@@ -110,6 +110,12 @@
 					GoogleChart();
 				});
 			});
+
+			// Traverse result set
+			this.myDataBinding.data.forEach(row => {
+				console.log(row);
+  			})
+  
 		}
 	}
 
