@@ -1,6 +1,6 @@
 (function() { 
 	let shadowRoot;
-	let dataBinding;
+	const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
 	
 	let template = document.createElement("template");
 	template.innerHTML = `
@@ -71,11 +71,6 @@
 		google.charts.setOnLoadCallback(function(){ drawChart() });
     }
 
-	async function loadData(){
-		dataBinding = await this.dataBindings.getDataBinding('myDataBinding');
-		console.log(dataBinding);
-	}
-
 	class AlexBox extends HTMLElement {
 		constructor() {
 			super(); 
@@ -117,27 +112,9 @@
 				});
 			});
 
-			loadData();
-			console.log('after load');
-			console.log(dataBinding);
-			/*
-
-			var that = this;
-
-			let load_promise = new Promise(function(resolve, reject) {
-				dataBinding = that.dataBindings.getDataBinding('myDataBinding');
-				while(dataBinding.data === undefined){}
-				resolve("loaded");
-			})
-
-			load_promise.then(() => {
-				console.log(dataBinding);
-				// Traverse result set
-				dataBinding.data.forEach(row => {
+			await dataBinding.data.forEach(row => {
 				console.log(row);
-  				})
-			});
-			*/
+  			})
 		}
 	}
 
