@@ -113,7 +113,7 @@
 				});
 			});
 
-			await dataBinding.data.forEach(row => {
+			dataBinding.data.forEach(row => {
 				console.log(row);
   			})
 		}
