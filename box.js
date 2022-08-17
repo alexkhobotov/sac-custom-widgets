@@ -128,13 +128,14 @@
 			new Promise(function(resolve, reject) {
 				dataBindings = that.dataBindings;
 				console.log("Bindings loaded");
+				resolve("done");
 			  }).then(function() {
 				dataBinding = dataBindings.getDataBinding('myDataBinding');
 				console.log("myDataBinding loaded");
-			  }).then(function(result) {
+			  }).then(function() {
 				bindingData = dataBinding.data;
 				console.log("Data loaded");
-			  }).then(function(result) {
+			  }).then(function() {
 				bindingData.forEach(row => {
 					console.log(row);
 				})
