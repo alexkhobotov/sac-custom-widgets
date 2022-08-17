@@ -1,6 +1,7 @@
 (function() { 
 	let shadowRoot;
 	const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
+	let ds = await dataBinding.getDataSource();
 	
 	let template = document.createElement("template");
 	template.innerHTML = `
