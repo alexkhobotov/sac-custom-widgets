@@ -113,6 +113,7 @@
 			});
 
 			let load_promise = new Promise(function(resolve, reject) {
+				this = that;
 				dataBinding = this.dataBindings.getDataBinding('myDataBinding');
 				resolve("loaded");
 			})
