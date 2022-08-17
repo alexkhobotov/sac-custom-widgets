@@ -118,7 +118,7 @@
 					GoogleChart();
 				});
 			});
-
+			/*
 			let dataBindings;
 			let dataBinding;
 			let bindingData;
@@ -141,7 +141,17 @@
 				bindingData.forEach(row => {
 					console.log(row);
 				})
-			});
+			});*/
+			this.getData();
+		}
+
+		async getData(){
+			const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
+			await dataBinding.addDimensionToFeed("dimensions", "dim");
+
+			dataBinding.data.forEach(row => {
+				console.log(row);
+			  })
 		}
 	}
 
