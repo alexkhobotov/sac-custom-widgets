@@ -119,7 +119,23 @@
 				});
 			});
 
-			loadData();
+			let dataBindings;
+			let dataBinding;
+			let bindingData;
+			new Promise(function(resolve, reject) {
+				dataBindings = this.dataBindings;
+				console.log("Bindings loaded");
+			  }).then(function() {
+				dataBinding = dataBindings.getDataBinding('myDataBinding');
+				console.log("myDataBinding loaded");
+			  }).then(function(result) {
+				bindingData = dataBinding.data;
+				console.log("Data loaded");
+			  }).then(function(result) {
+				bindingData.forEach(row => {
+					console.log(row);
+				})
+			});
 		}
 	}
 
