@@ -31,7 +31,7 @@
     	}
 
 	async function loadData(){
-		const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
+		const dataBinding = await this.dataBindings.getDataBinding('myDataBinding');
 		let ds = await dataBinding.getDataSource();
 		dataBinding.data.forEach(row => {
 			console.log(row);
