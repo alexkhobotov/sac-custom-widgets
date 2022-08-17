@@ -22,13 +22,6 @@
 			"url": "https://alexkhobotov.github.io/sac-custom-widgets/box_styling.js",
 			"integrity": "",
 			"ignoreIntegrity": true
-		},
-		{
-			"kind": "builder",
-			"tag": "com-alex-khobotov-box-builder",
-			"url": "https://alexkhobotov.github.io/sac-custom-widgets/box_builder.js",
-			"integrity": "",
-			"ignoreIntegrity": true
 		}
 	],
 	"properties": {
