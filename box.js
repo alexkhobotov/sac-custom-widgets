@@ -118,7 +118,7 @@
 					GoogleChart();
 				});
 			});
-			/*
+			
 			let dataBindings;
 			let dataBinding;
 			let bindingData;
@@ -128,7 +128,7 @@
 			new Promise(function(resolve, reject) {
 				dataBindings = that.dataBindings;
 				console.log("Bindings loaded");
-				resolve("done");
+				setTimeout(() => resolve("done"), 5000);
 			  }).then(function() {
 				dataBinding = dataBindings.getDataBinding('myDataBinding');
 				console.log(dataBinding);
@@ -141,8 +141,8 @@
 				bindingData.forEach(row => {
 					console.log(row);
 				})
-			});*/
-			this.getData();
+			});
+			//this.getData();
 		}
 
 		async getData(){
