@@ -113,14 +113,14 @@
 			});
 
 			let load_promise = new Promise(function(resolve, reject) {
-				this.myDataBinding;
+				dataBinding = this.dataBindings.getDataBinding('myDataBinding');
 				resolve("loaded");
 			})
 
 			load_promise.then(() => {
-				console.log(this.myDataBinding);
+				console.log(dataBinding);
 				// Traverse result set
-				this.myDataBinding.data.forEach(row => {
+				dataBinding.data.forEach(row => {
 				console.log(row);
   				})
 			});
