@@ -119,6 +119,7 @@
 				});
 			});
 			
+			/*
 			let dataBindings;
 			let dataBinding;
 			let bindingData;
@@ -141,13 +142,15 @@
 				bindingData.forEach(row => {
 					console.log(row);
 				})
-			});
-			//this.getData();
+			});*/
+			this.getData();
 		}
 
 		async getData(){
 			const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
-			let bindingData = await dataBinding.data;
+			var ds_name = await dataBinding.getDataSource();
+			console.log(ds_name);
+			var bindingData = await dataBinding.data;
 			console.log(bindingData);
 			bindingData.forEach(row => {
 				console.log(row);
