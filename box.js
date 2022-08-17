@@ -147,12 +147,10 @@
 
 		async getData(){
 			const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
-			await dataBinding.addDimensionToFeed("dimensions", "dim");
-			console.log(dataBinding);
-			/*
-			dataBinding.data.forEach(row => {
+			let bindingData = await dataBinding.data;
+			bindingData.forEach(row => {
 				console.log(row);
-			  })*/
+			  })
 		}
 	}
 
