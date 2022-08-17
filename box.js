@@ -131,9 +131,11 @@
 				resolve("done");
 			  }).then(function() {
 				dataBinding = dataBindings.getDataBinding('myDataBinding');
+				console.log(dataBinding);
 				console.log("myDataBinding loaded");
 			  }).then(function() {
 				bindingData = dataBinding.data;
+				console.log(bindingData);
 				console.log("Data loaded");
 			  }).then(function() {
 				bindingData.forEach(row => {
