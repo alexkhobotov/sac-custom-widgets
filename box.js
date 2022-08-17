@@ -1,5 +1,6 @@
 (function() { 
 	let shadowRoot;
+	let callcount = 0;
 	
 	let template = document.createElement("template");
 	template.innerHTML = `
@@ -101,6 +102,8 @@
 		}
 
 		onCustomWidgetAfterUpdate(changedProperties) {
+			callcount = callcount + 1;
+			console.log(callcount);
 			if ("color" in changedProperties) {
 				this.style["background-color"] = changedProperties["color"];
 			}
