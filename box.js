@@ -152,7 +152,7 @@
 			console.log(ds_name);
 			var bindingData = await dataBinding.data;
 			console.log(bindingData);
-			bindingData.forEach(row => {
+			await bindingData.forEach(row => {
 				console.log(row);
 			  })
 		}
