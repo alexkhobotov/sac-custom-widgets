@@ -116,7 +116,7 @@
 
 			let load_promise = new Promise(function(resolve, reject) {
 				dataBinding = that.dataBindings.getDataBinding('myDataBinding');
-				while(!dataBinding.data){}
+				while(dataBinding.data === undefined){}
 				resolve("loaded");
 			})
 
