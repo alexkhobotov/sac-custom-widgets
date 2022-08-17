@@ -148,6 +148,7 @@
 		async getData(){
 			const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
 			let bindingData = await dataBinding.data;
+			console.log(bindingData);
 			bindingData.forEach(row => {
 				console.log(row);
 			  })
