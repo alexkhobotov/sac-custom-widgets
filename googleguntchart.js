@@ -63,12 +63,6 @@
 				this.dispatchEvent(event);
 			});
 			
-			loadScript(googleloaderjs, function(){
-				console.log("Load:" + googleloaderjs);
-				loadScript(ganttjs, function() {
-					console.log("Load:" + ganttjs);
-				});
-			});
 		
 			this._props = {};
 		}
@@ -86,17 +80,25 @@
 			if ("opacity" in changedProperties) {
 				this.style["opacity"] = changedProperties["opacity"];
 			}
-			
+
 			var that = this;
 
-			new Promise(function(resolve, reject) {
-				that.getData();
-				console.log("Data loaded");
-				resolve("done");
-			  }).then(function() {
-				GoogleChart();
-				console.log("Chart drown");
-			  });
+			loadScript(googleloaderjs, function(){
+				console.log("Load:" + googleloaderjs);
+				loadScript(ganttjs, function() {
+					console.log("Load:" + ganttjs);
+					new Promise(function(resolve, reject) {
+						that.getData();
+						console.log("Data loaded");
+						resolve("done");
+					  }).then(function() {
+						GoogleChart();
+						console.log("Chart drown");
+					  });
+				});
+			});
+
+			
 		}
 
 		async getData(){
