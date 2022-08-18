@@ -121,6 +121,7 @@
 
 			let widget_data = await this.getData();
 			console.log(widget_data);
+			console.log(this.myDataBinding);
 
 			if (widget_data){
 				widget_data.forEach(row => {
