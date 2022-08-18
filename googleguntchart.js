@@ -131,8 +131,10 @@
 					console.log(row);
 				  })
 			}
-			console.log(await this.myDataBinding.getDataSource());
-			console.log(await this.myDataBinding.getDimensions("dimensions"));
+
+			const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
+			console.log(await dataBinding.getDataSource());
+			console.log(await dataBinding.getDimensions("dimensions"));
 			
 		}
 	}
