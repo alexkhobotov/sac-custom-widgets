@@ -156,7 +156,9 @@
 			//var bindingData = await dataBinding.data;
 			//console.log(bindingData);
 			//await 
+			
 			if (this.myDataBinding.data){
+				console.log(this.myDataBinding.data);
 				this.myDataBinding.data.forEach(row => {
 					console.log(row);
 				  })
