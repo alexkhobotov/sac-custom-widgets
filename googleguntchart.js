@@ -110,27 +110,30 @@
 					console.log("Load:" + googleloaderjs);
 					loadScript(ganttjs, function() {
 						console.log("Load:" + ganttjs);
-						//GoogleChart();
+						GoogleChart();
 						//console.log("Chart drown");
 					});
 				});
 			}
 
-			await this.getData();
-			GoogleChart();
+			let widget_data = await this.getData();
+			console.log(widget_data);
+			//this.getData().then({GoogleChart();});
 		}
 
 		async getData(){
+			/*
 			if (this.myDataBinding.data){
 				console.log(this.myDataBinding.data);
 				this.myDataBinding.data.forEach(row => {
 					console.log(row);
 				  })
-			}
+			}*/
 
-			const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
-			console.log(await dataBinding.getDataSource());
-			console.log(await dataBinding.getDimensions("dimensions"));
+			//const dataBinding = await this.dataBindings.getDataBinding('myDataBinding');
+			//console.log(await dataBinding.getDataSource());
+			//console.log(await dataBinding.getDimensions("dimensions"));*/
+			return await this.myDataBinding.data;
 		}
 	}
 
