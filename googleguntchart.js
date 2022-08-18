@@ -69,6 +69,9 @@
 		google.charts.setOnLoadCallback(function(){ drawChart() });
     }
 
+	async function loadAllScripts(){
+
+	}
 
 	class GoogleGunttChart extends HTMLElement {
 		constructor() {
@@ -124,6 +127,10 @@
 					console.log(row);
 				  })
 			}
+		}
+
+		async getData(){
+			return await this.myDataBinding.data;
 		}
 	}
 
