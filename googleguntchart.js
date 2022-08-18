@@ -1,6 +1,8 @@
 (function() { 
 	let shadowRoot;
 	let callcount = 0;
+
+	let data;
 	
 	let template = document.createElement("template");
 	template.innerHTML = `
@@ -29,40 +31,34 @@
     	}	
 	
 	function drawChart() {
-	      var data = new google.visualization.DataTable();
-	      data.addColumn('string', 'Task ID');
-	      data.addColumn('string', 'Task Name');
-		  data.addColumn('string', 'Resource');
-	      data.addColumn('date', 'Start Date');
-	      data.addColumn('date', 'End Date');
-	      data.addColumn('number', 'Duration');
-	      data.addColumn('number', 'Percent Complete');
-	      data.addColumn('string', 'Dependencies');
+		if (data.getNumberOfRows() !== 0){
 
-	      data.addRows([
-		['Upgrade_tst', 'Upgrade IBP TEST', 'system',
-		 new Date(2021, 11, 28), new Date(2022, 0, 5), null,  100,  null],
-		['Upgrade', 'Upgrade IBP PROD', 'system',
-		 new Date(2022, 0, 5), new Date(2022, 0, 10), null,  100,  'Upgrade_tst'],
-		['TR', 'Load Transactional Data to IBP', 'data load',
-		 null, new Date(2022, 0, 14), daysToMilliseconds(3), 25, 'Upgrade,MD'],
-		['MD', 'Load Master Data to IBP', 'data load',
-		new Date(2022, 0, 10), new Date(2022, 0, 11), daysToMilliseconds(1), 100, 'Upgrade']
-	      ]);
+			var options = {
+			height: 275
+			};
 
-	      var options = {
-		height: 275
-	      };
+			var chart = new google.visualization.Gantt(div);
 
-	      var chart = new google.visualization.Gantt(div);
-
-	      chart.draw(data, options);
-    	}
+			chart.draw(data, options);
+		}
+    }
 	
 	// Google Chart
     function GoogleChart(){
 		google.charts.setOnLoadCallback(function(){ drawChart() });
     }
+
+	function initData(){
+		data = new google.visualization.DataTable();
+		data.addColumn('string', 'Task ID');
+		data.addColumn('string', 'Task Name');
+		data.addColumn('string', 'Resource');
+		data.addColumn('date', 'Start Date');
+		data.addColumn('date', 'End Date');
+		data.addColumn('number', 'Duration');
+		data.addColumn('number', 'Percent Complete');
+		data.addColumn('string', 'Dependencies');
+	}
 
 	class GoogleGunttChart extends HTMLElement {
 		constructor() {
@@ -83,6 +79,7 @@
 				console.log("Load:" + googleloaderjs);
 				loadScript(ganttjs, function() {
 					console.log("Load:" + ganttjs);
+					initData();
 					GoogleChart();
 				});
 			});
@@ -136,6 +133,16 @@
 			console.log(await dataBinding.getDataSource());
 			console.log(await dataBinding.getDimensions("dimensions"));
 			
+			data.addRows([
+				['Upgrade_tst', 'Upgrade IBP TEST', 'system',
+				new Date(2021, 11, 28), new Date(2022, 0, 5), null,  100,  null],
+				['Upgrade', 'Upgrade IBP PROD', 'system',
+				new Date(2022, 0, 5), new Date(2022, 0, 10), null,  100,  'Upgrade_tst'],
+				['TR', 'Load Transactional Data to IBP', 'data load',
+				null, new Date(2022, 0, 14), daysToMilliseconds(3), 25, 'Upgrade,MD'],
+				['MD', 'Load Master Data to IBP', 'data load',
+				new Date(2022, 0, 10), new Date(2022, 0, 11), daysToMilliseconds(1), 100, 'Upgrade']
+				]);
 		}
 	}
 
