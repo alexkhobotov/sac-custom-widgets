@@ -123,7 +123,7 @@
 			let widget_data = await this.getData();
 			//console.log(widget_data);
 			//console.log(this.myDataBinding);
-			let prepared_data = await prepareData(widget_data);
+			let prepared_data = await this.prepareData(widget_data);
 			console.log(prepared_data);
 
 		}
