@@ -97,6 +97,7 @@
 				});
 			}
 			else{
+				const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
 				let data_set = await dataBinding.getDataSource().getResultSet();
 				console.log(data_set);
 				let widget_data = await this.getData(); //how to make shure that data is loaded?
