@@ -163,6 +163,9 @@
 					console.log(row);
 				  })
 			}
+
+			console.log(this.myDataBinding.getMembers("dimensions"));
+			console.log(this.myDataBinding.getDataSource());
 		}
 	}
 
