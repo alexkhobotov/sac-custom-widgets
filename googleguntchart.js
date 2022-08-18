@@ -116,7 +116,7 @@
 				});
 			}
 
-			await getData();
+			await this.getData();
 			GoogleChart();
 		}
 
