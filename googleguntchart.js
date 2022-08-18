@@ -149,8 +149,8 @@
 				widget_data.forEach(row => {
 					console.log(row);
 					prepared_data.addRows([
-						[row.dimensions_0.id, row.dimensions_1.id, 'system',
-						new Date(2021, 11, 28), new Date(2022, 0, 5), null,  100,  null]
+						[row.dimensions_0.id, row.dimensions_1.id, row.dimensions_2.id,
+						new Date(row.dimensions_3.id), new Date(row.dimensions_4.id), null,  100,  row.dimensions_5.id]
 						]);
 				})
 			}
