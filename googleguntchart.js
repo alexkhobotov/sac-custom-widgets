@@ -48,18 +48,6 @@
 		google.charts.setOnLoadCallback(function(){ drawChart() });
     }
 
-	function initData(){
-		data = new google.visualization.DataTable();
-		data.addColumn('string', 'Task ID');
-		data.addColumn('string', 'Task Name');
-		data.addColumn('string', 'Resource');
-		data.addColumn('date', 'Start Date');
-		data.addColumn('date', 'End Date');
-		data.addColumn('number', 'Duration');
-		data.addColumn('number', 'Percent Complete');
-		data.addColumn('string', 'Dependencies');
-	}
-
 	class GoogleGunttChart extends HTMLElement {
 		constructor() {
 			super(); 
@@ -79,8 +67,6 @@
 				console.log("Load:" + googleloaderjs);
 				loadScript(ganttjs, function() {
 					console.log("Load:" + ganttjs);
-					initData();
-					GoogleChart();
 				});
 			});
 		
@@ -100,14 +86,6 @@
 			if ("opacity" in changedProperties) {
 				this.style["opacity"] = changedProperties["opacity"];
 			}
-			
-			loadScript(googleloaderjs, function(){
-				console.log("Load:" + googleloaderjs);
-				loadScript(ganttjs, function() {
-					console.log("Load:" + ganttjs);
-					GoogleChart();
-				});
-			});
 			
 			var that = this;
 
@@ -133,6 +111,17 @@
 			console.log(await dataBinding.getDataSource());
 			console.log(await dataBinding.getDimensions("dimensions"));
 			
+
+			data = new google.visualization.DataTable();
+			data.addColumn('string', 'Task ID');
+			data.addColumn('string', 'Task Name');
+			data.addColumn('string', 'Resource');
+			data.addColumn('date', 'Start Date');
+			data.addColumn('date', 'End Date');
+			data.addColumn('number', 'Duration');
+			data.addColumn('number', 'Percent Complete');
+			data.addColumn('string', 'Dependencies');
+
 			data.addRows([
 				['Upgrade_tst', 'Upgrade IBP TEST', 'system',
 				new Date(2021, 11, 28), new Date(2022, 0, 5), null,  100,  null],
