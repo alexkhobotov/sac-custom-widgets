@@ -118,6 +118,7 @@
 					});
 				});
 			}
+			console.log(this);
 
 			let widget_data = await this.getData();
 			console.log(widget_data);
