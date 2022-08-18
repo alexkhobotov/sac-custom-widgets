@@ -31,6 +31,7 @@
 	
 	function drawChart() {
 
+		/*
 		data = new google.visualization.DataTable();
 		data.addColumn('string', 'Task ID');
 		data.addColumn('string', 'Task Name');
@@ -51,8 +52,8 @@
 				['MD', 'Load Master Data to IBP', 'data load',
 				new Date(2022, 0, 10), new Date(2022, 0, 11), daysToMilliseconds(1), 100, 'Upgrade']
 				]);
-
-		if (data.getNumberOfRows() !== 0){
+		*/
+		if (data && data.getNumberOfRows() !== 0){
 
 			var options = {
 			height: 275
@@ -125,6 +126,8 @@
 			//console.log(this.myDataBinding);
 			let prepared_data = await this.prepareData(widget_data);
 			console.log(prepared_data);
+			data = prepared_data;
+			GoogleChart();
 
 		}
 
