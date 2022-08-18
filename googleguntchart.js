@@ -9,12 +9,9 @@
 	`;
 	
 	const div = document.createElement('div');
-        div.innerHTML = '<div id="chart_div"></div>';
+    div.innerHTML = '<div id="chart_div"></div>';
 	
-	//let googleloaderjs = document.createElement("script");
-    //googleloaderjs.src = "https://www.gstatic.com/charts/loader.js";
 	let googleloaderjs = "https://www.gstatic.com/charts/loader.js";
-	
 	let ganttjs = "https://alexkhobotov.github.io/sac-custom-widgets/gantt.js"
 	
 	
@@ -29,17 +26,7 @@
 	
 	function daysToMilliseconds(days) {
       		return days * 24 * 60 * 60 * 1000;
-    	}
-
-	async function loadData(){
-		const dataBinding = await this.dataBindings.getDataBinding('myDataBinding');
-		let ds = await dataBinding.getDataSource();
-		dataBinding.data.forEach(row => {
-			console.log(row);
-		  })
-	}
-	
-	
+    	}	
 	
 	function drawChart() {
 	      var data = new google.visualization.DataTable();
@@ -66,8 +53,6 @@
 	      var options = {
 		height: 275
 	      };
-		
-		console.log(div);
 
 	      var chart = new google.visualization.Gantt(div);
 
