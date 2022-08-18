@@ -91,19 +91,20 @@
 					console.log("Load:" + googleloaderjs);
 					loadScript(ganttjs, function() {
 						console.log("Load:" + ganttjs);
-						GoogleChart();
+						//GoogleChart();
 						//console.log("Chart drown");
 					});
 				});
 			}
-			let widget_data = await this.getData();
-			//console.log(widget_data);
-			//console.log(this.myDataBinding);
-			let prepared_data = await this.prepareData(widget_data);
-			console.log(prepared_data);
-			data = prepared_data;
-			GoogleChart();
-
+			else{
+				let data_set = await dataBinding.getDataSource().getResultSet();
+				console.log(data_set);
+				let widget_data = await this.getData(); //how to make shure that data is loaded?
+				let prepared_data = await this.prepareData(widget_data);
+				console.log(prepared_data);
+				data = prepared_data;
+				GoogleChart();
+			}
 		}
 
 		async getData(){
