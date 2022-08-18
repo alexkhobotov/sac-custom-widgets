@@ -131,7 +131,7 @@
 		}
 
 		async getData(){
-			return await this.myDataBinding.getData();
+			return await this.myDataBinding.data;
 		}
 	}
 
