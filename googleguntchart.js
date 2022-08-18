@@ -72,13 +72,21 @@
 			shadowRoot.appendChild(template.content.cloneNode(true));
 			
 			//create div for google chart
-                	shadowRoot.appendChild(div);
+            shadowRoot.appendChild(div);
 			
 			this.addEventListener("click", event => {
 				var event = new Event("onClick");
 				this.dispatchEvent(event);
 			});
 			
+			loadScript(googleloaderjs, function(){
+				console.log("Load:" + googleloaderjs);
+				loadScript(ganttjs, function() {
+					console.log("Load:" + ganttjs);
+					GoogleChart();
+				});
+			});
+		
 			this._props = {};
 		}
 
@@ -96,9 +104,6 @@
 				this.style["opacity"] = changedProperties["opacity"];
 			}
 			
-			//google.charts.load('current', {'packages':['gantt']});
-   			//google.charts.setOnLoadCallback(drawChart);
-			
 			loadScript(googleloaderjs, function(){
 				console.log("Load:" + googleloaderjs);
 				loadScript(ganttjs, function() {
@@ -107,41 +112,19 @@
 				});
 			});
 			
-			/*
-			let dataBindings;
-			let dataBinding;
-			let bindingData;
-
 			var that = this;
 
 			new Promise(function(resolve, reject) {
-				dataBindings = that.dataBindings;
-				console.log("Bindings loaded");
-				setTimeout(() => resolve("done"), 5000);
-			  }).then(function() {
-				dataBinding = dataBindings.getDataBinding('myDataBinding');
-				console.log(dataBinding);
-				console.log("myDataBinding loaded");
-			  }).then(function() {
-				bindingData = dataBinding.data;
-				console.log(bindingData);
+				that.getData();
 				console.log("Data loaded");
+				resolve("done");
 			  }).then(function() {
-				bindingData.forEach(row => {
-					console.log(row);
-				})
-			});*/
-			this.getData();
+				GoogleChart();
+				console.log("Chart drown");
+			  });
 		}
 
 		async getData(){
-			//const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
-			//var ds_name = await dataBinding.getDataSource();
-			//console.log(ds_name);
-			//var bindingData = await dataBinding.data;
-			//console.log(bindingData);
-			//await 
-			
 			if (this.myDataBinding.data){
 				console.log(this.myDataBinding.data);
 				this.myDataBinding.data.forEach(row => {
