@@ -22,8 +22,7 @@
 		script.type = 'text/javascript';
 		script.src = src;
 		script.addEventListener("load", callback);
-		shadowRoot.append
-		Child(script);
+		shadowRoot.appendChild(script);
     }
 	
 	function daysToMilliseconds(days) {
