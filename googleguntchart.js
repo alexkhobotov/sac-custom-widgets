@@ -149,7 +149,7 @@
 				widget_data.forEach(row => {
 					console.log(row);
 					prepared_data.addRows([
-						['Upgrade_tst', 'Upgrade IBP TEST', 'system',
+						[row.dimensions_0.id, row.dimensions_1.id, 'system',
 						new Date(2021, 11, 28), new Date(2022, 0, 5), null,  100,  null]
 						]);
 				})
