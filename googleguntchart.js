@@ -163,9 +163,9 @@
 					console.log(row);
 				  })
 			}
-
-			console.log(this.myDataBinding.getDimensions("dimensions"));
-			console.log(this.myDataBinding.getDataSource());
+			console.log(await this.myDataBinding.getDataSource());
+			console.log(await this.myDataBinding.getDimensions("dimensions"));
+			
 		}
 	}
 
