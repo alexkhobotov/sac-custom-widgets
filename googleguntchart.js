@@ -105,16 +105,16 @@
 
 			var that = this;
 
-			loadScript(googleloaderjs, function(){
-				console.log("Load:" + googleloaderjs);
-				loadScript(ganttjs, function() {
-					console.log("Load:" + ganttjs);
-						GoogleChart();
-						console.log("Chart drown");
+			if (callcount === 1){
+				loadScript(googleloaderjs, function(){
+					console.log("Load:" + googleloaderjs);
+					loadScript(ganttjs, function() {
+						console.log("Load:" + ganttjs);
+							GoogleChart();
+							console.log("Chart drown");
+					});
 				});
-			});
-
-			
+			}
 		}
 
 		async getData(){
