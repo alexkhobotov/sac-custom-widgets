@@ -22,9 +22,9 @@
 		script.type = 'text/javascript';
 		script.src = src;
 		script.addEventListener("load", callback);
-		shadowRoot.appendChild(script);
+		shadowRoot.append
+		Child(script);
     }
-	
 	
 	function daysToMilliseconds(days) {
       		return days * 24 * 60 * 60 * 1000;
@@ -69,6 +69,7 @@
     function GoogleChart(){
 		google.charts.setOnLoadCallback(function(){ drawChart() });
     }
+
 
 	class GoogleGunttChart extends HTMLElement {
 		constructor() {
@@ -118,22 +119,12 @@
 
 			let widget_data = await this.getData();
 			console.log(widget_data);
-			//this.getData().then({GoogleChart();});
-		}
 
-		async getData(){
-			/*
-			if (this.myDataBinding.data){
-				console.log(this.myDataBinding.data);
-				this.myDataBinding.data.forEach(row => {
+			if (widget_data){
+				widget_data.forEach(row => {
 					console.log(row);
 				  })
-			}*/
-
-			//const dataBinding = await this.dataBindings.getDataBinding('myDataBinding');
-			//console.log(await dataBinding.getDataSource());
-			//console.log(await dataBinding.getDimensions("dimensions"));*/
-			return await this.myDataBinding.data;
+			}
 		}
 	}
 
