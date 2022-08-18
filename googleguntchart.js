@@ -132,7 +132,7 @@
 		}
 
 		async getData(){
-			while(this.myDataBinding !== 'success'){
+			while(this.myDataBinding.state !== 'success'){
 				
 			}
 			return this.myDataBinding.data;
