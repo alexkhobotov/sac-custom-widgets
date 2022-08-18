@@ -121,21 +121,37 @@
 			console.log(this);
 
 			let widget_data = await this.getData();
-			console.log(widget_data);
-			console.log(this.myDataBinding);
+			//console.log(widget_data);
+			//console.log(this.myDataBinding);
+			let prepared_data = await prepareData(widget_data);
+			console.log(prepared_data);
 
-			if (widget_data){
-				widget_data.forEach(row => {
-					console.log(row);
-				  })
-			}
 		}
 
 		async getData(){
-			while(this.myDataBinding.state !== 'success'){
-				
+			return await this.myDataBinding.data;
+		}
+
+		async prepareData(widget_data){
+			let prepared_data = new google.visualization.DataTable();
+			prepared_data.addColumn('string', 'Task ID');
+			prepared_data.addColumn('string', 'Task Name');
+			prepared_data.addColumn('string', 'Resource');
+			prepared_data.addColumn('date', 'Start Date');
+			prepared_data.addColumn('date', 'End Date');
+			prepared_data.addColumn('number', 'Duration');
+			prepared_data.addColumn('number', 'Percent Complete');
+			prepared_data.addColumn('string', 'Dependencies');
+			if (widget_data){
+				widget_data.forEach(row => {
+					console.log(row);
+					prepared_data.addRows([
+						['Upgrade_tst', 'Upgrade IBP TEST', 'system',
+						new Date(2021, 11, 28), new Date(2022, 0, 5), null,  100,  null]
+						]);
+				})
 			}
-			return this.myDataBinding.data;
+			return prepared_data;
 		}
 	}
 
