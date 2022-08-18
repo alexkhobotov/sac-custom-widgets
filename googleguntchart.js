@@ -164,7 +164,7 @@
 				  })
 			}
 
-			console.log(this.myDataBinding.getMembers("dimensions"));
+			console.log(this.myDataBinding.getDimensions("dimensions"));
 			console.log(this.myDataBinding.getDataSource());
 		}
 	}
