@@ -150,7 +150,7 @@
 					console.log(row);
 					prepared_data.addRows([
 						[row.dimensions_0.id, row.dimensions_1.id, row.dimensions_2.id,
-						new Date(row.dimensions_3.id), new Date(row.dimensions_4.id), null,  100,  (row.dimensions_5.id === '#') ? null : row.dimensions_5.id]
+						new Date(row.dimensions_3.id), new Date(row.dimensions_4.id), null,  100,  (row.dimensions_6.id === '#') ? null : row.dimensions_6.id]
 						]);
 				})
 			}
