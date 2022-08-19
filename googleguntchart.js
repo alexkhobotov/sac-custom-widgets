@@ -98,11 +98,13 @@
 
 			scriptsLoadPromise.then(() => {
 				const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
-				let data_set = await dataBinding.getDataSource().getResultSet();
+				let data_set = dataBinding.getDataSource().getResultSet();
 				console.log(data_set);
-				let prepared_data = await this.dataSetToGoogleData(data_set);
+			}).then(()=>{
+				let prepared_data = this.dataSetToGoogleData(data_set);
 				console.log(prepared_data);
 				data = prepared_data;
+			}).then(()=>{
 				GoogleChart();
 			});
 
