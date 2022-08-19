@@ -101,7 +101,7 @@
 
 			scriptsLoadPromise.then(() => {
 				const dataBinding = that.dataBindings.getDataBinding('myDataBinding');
-				let data_set = dataBinding.getDataSource().getResultSet();
+				var data_set = dataBinding.getDataSource().getResultSet();
 				console.log(data_set);
 			}).then(()=>{
 				let prepared_data = that.dataSetToGoogleData(data_set);
