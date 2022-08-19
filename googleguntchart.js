@@ -31,7 +31,7 @@
       		return days * 24 * 60 * 60 * 1000;
     	}	
 	
-	function drawChart() {
+	function drawChart(data) {
 		if (data && data.getNumberOfRows() !== 0){
 
 			var options = {
@@ -45,8 +45,8 @@
     }
 	
 	// Google Chart
-    function GoogleChart(){
-		google.charts.setOnLoadCallback(function(){ drawChart() });
+    function GoogleChart(prepared_data){
+		google.charts.setOnLoadCallback(function(){ drawChart(prepared_data) });
     }
 
 	async function loadAllScripts(){
@@ -105,9 +105,9 @@
 			}).then((data_set)=>{
 				let prepared_data = that.dataSetToGoogleData(data_set);
 				console.log(prepared_data);
-				data = prepared_data;
-			}).then(()=>{
-				GoogleChart();
+				return prepared_data;
+			}).then((prepared_data)=>{
+				GoogleChart(prepared_data);
 			});
 
 			/*
