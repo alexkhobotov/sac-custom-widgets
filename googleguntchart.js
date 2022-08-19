@@ -25,6 +25,14 @@
 		script.addEventListener("load", callback);
 		shadowRoot.appendChild(script);
     }
+
+	//Script loading 
+	function loadScriptByUrl(src) {
+		const script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.src = src;
+		shadowRoot.appendChild(script);
+    }
 	
 	//Google chart rendering
 	function drawChart(data) {
@@ -76,7 +84,7 @@
 			scriptsLoadPromise = new Promise((resolve,reject)=>{
 				loadScript(googleloaderjs, function(){
 					console.log("Load:" + googleloaderjs);
-					google.charts.load('upcoming', {packages: ['corechart']}).then(resolve("scripts are loaded"));
+					resolve("loaded");
 				});
 			});
 
@@ -113,12 +121,18 @@
 			var that = this;
 
 			//sequence of data manipulation and chart rendering steps after all scripts are loaded
-			scriptsLoadPromise.then(() => {
+			scriptsLoadPromise
+			.then(() => {
+				google.charts.load('upcoming', {packages: ['corechart']});
+			})
+			.then(() => {
 				const dataBinding = that.dataBindings.getDataBinding('myDataBinding');
 				return dataBinding.getDataSource().getResultSet();
-			}).then((data_set)=>{
+			})
+			.then((data_set)=>{
 				return dataSetToGoogleData(data_set);
-			}).then((prepared_data)=>{
+			})
+			.then((prepared_data)=>{
 				GoogleChart(prepared_data);
 			});
 		}
