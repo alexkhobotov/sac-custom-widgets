@@ -73,10 +73,6 @@
 		constructor() {
 			super(); 
 			shadowRoot = this.attachShadow({mode: "open"});
-			shadowRoot.appendChild(template.content.cloneNode(true));
-			
-			//create div for google chart
-            shadowRoot.appendChild(div);
 
 			//load all required scripts and create promise to call dependant code after
 			scriptsLoadPromise = new Promise((resolve,reject)=>{
@@ -88,6 +84,12 @@
 					});
 				});
 			});
+
+			//append template
+			shadowRoot.appendChild(template.content.cloneNode(true));
+			
+			//append div for google chart
+            shadowRoot.appendChild(div);
 			
 			//add onClick listener
 			this.addEventListener("click", event => {
