@@ -2,8 +2,6 @@
 	let shadowRoot;
 	let callcount = 0;
 
-	//let data;
-	
 	let scriptsLoadPromise;
 
 	let template = document.createElement("template");
@@ -83,7 +81,7 @@
 			this._props = { ...this._props, ...changedProperties };
 		}
 
-		async onCustomWidgetAfterUpdate(changedProperties) {
+		onCustomWidgetAfterUpdate(changedProperties) {
 			callcount = callcount + 1;
 			console.log(callcount);
 			if ("color" in changedProperties) {
@@ -103,65 +101,9 @@
 			}).then((prepared_data)=>{
 				GoogleChart(prepared_data);
 			});
-
-			/*
-			
-			if (callcount === 1){
-
-				loadScript(googleloaderjs, function(){
-					console.log("Load:" + googleloaderjs);
-					loadScript(ganttjs, function() {
-						console.log("Load:" + ganttjs);
-						//GoogleChart();
-						//console.log("Chart drown");
-					});
-				});
-			}
-			else{
-				const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
-				let data_set = await dataBinding.getDataSource().getResultSet();
-				console.log(data_set);
-				//let widget_data = await this.getData(); //how to make shure that data is loaded?
-				//let prepared_data = await this.prepareData(widget_data);
-				let prepared_data = await this.dataSetToGoogleData(data_set);
-				console.log(prepared_data);
-				data = prepared_data;
-				GoogleChart();
-			}
-			*/
 		}
 
-		/*
-		async getData(){
-			return await this.myDataBinding.data;
-		}
-		*/
-
-		/*
-		async prepareData(widget_data){
-			let prepared_data = new google.visualization.DataTable();
-			prepared_data.addColumn('string', 'Task ID');
-			prepared_data.addColumn('string', 'Task Name');
-			prepared_data.addColumn('string', 'Resource');
-			prepared_data.addColumn('date', 'Start Date');
-			prepared_data.addColumn('date', 'End Date');
-			prepared_data.addColumn('number', 'Duration');
-			prepared_data.addColumn('number', 'Percent Complete');
-			prepared_data.addColumn('string', 'Dependencies');
-			if (widget_data){
-				widget_data.forEach(row => {
-					console.log(row);
-					prepared_data.addRows([
-						[row.dimensions_0.id, row.dimensions_1.id, row.dimensions_2.id,
-						new Date(row.dimensions_3.id), new Date(row.dimensions_4.id), null,  100,  (row.dimensions_6.id === '#') ? null : row.dimensions_6.id]
-						]);
-				})
-			}
-			return prepared_data;
-		}
-		*/
-
-		async dataSetToGoogleData(data_set){
+		dataSetToGoogleData(data_set){
 			let prepared_data = new google.visualization.DataTable();
 			prepared_data.addColumn('string', 'Task ID');
 			prepared_data.addColumn('string', 'Task Name');
