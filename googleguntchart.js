@@ -49,20 +49,16 @@
 		google.charts.setOnLoadCallback(function(){ drawChart(prepared_data) });
     }
 
-	async function loadAllScripts(){
-
-	}
-
 	class GoogleGunttChart extends HTMLElement {
 		constructor() {
 			super(); 
 			shadowRoot = this.attachShadow({mode: "open"});
-			//shadowRoot.appendChild(googleloaderjs);
 			shadowRoot.appendChild(template.content.cloneNode(true));
 			
 			//create div for google chart
             shadowRoot.appendChild(div);
 
+			//load all required scripts and create promise to call dependant code after
 			scriptsLoadPromise = new Promise((resolve,reject)=>{
 				loadScript(googleloaderjs, function(){
 					console.log("Load:" + googleloaderjs);
@@ -73,7 +69,7 @@
 				});
 			});
 			
-			
+			//add onClick listener
 			this.addEventListener("click", event => {
 				var event = new Event("onClick");
 				this.dispatchEvent(event);
