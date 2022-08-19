@@ -4,6 +4,8 @@
 
 	let data;
 	
+	let scriptsLoadPromise = new Promise();
+
 	let template = document.createElement("template");
 	template.innerHTML = `
 		<style>
@@ -60,6 +62,14 @@
 			
 			//create div for google chart
             shadowRoot.appendChild(div);
+
+			loadScript(googleloaderjs, function(){
+				console.log("Load:" + googleloaderjs);
+				loadScript(ganttjs, function() {
+					console.log("Load:" + ganttjs);
+					scriptsLoadPromise.resolve("scripts are loaded");
+				});
+			});
 			
 			this.addEventListener("click", event => {
 				var event = new Event("onClick");
@@ -86,7 +96,20 @@
 
 			var that = this;
 
+			scriptsLoadPromise.then(() => {
+				const dataBinding = this.dataBindings.getDataBinding('myDataBinding');
+				let data_set = await dataBinding.getDataSource().getResultSet();
+				console.log(data_set);
+				let prepared_data = await this.dataSetToGoogleData(data_set);
+				console.log(prepared_data);
+				data = prepared_data;
+				GoogleChart();
+			});
+
+			/*
+			
 			if (callcount === 1){
+
 				loadScript(googleloaderjs, function(){
 					console.log("Load:" + googleloaderjs);
 					loadScript(ganttjs, function() {
@@ -107,12 +130,16 @@
 				data = prepared_data;
 				GoogleChart();
 			}
+			*/
 		}
 
+		/*
 		async getData(){
 			return await this.myDataBinding.data;
 		}
+		*/
 
+		/*
 		async prepareData(widget_data){
 			let prepared_data = new google.visualization.DataTable();
 			prepared_data.addColumn('string', 'Task ID');
@@ -134,6 +161,7 @@
 			}
 			return prepared_data;
 		}
+		*/
 
 		async dataSetToGoogleData(data_set){
 			let prepared_data = new google.visualization.DataTable();
