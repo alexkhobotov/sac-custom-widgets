@@ -2,7 +2,7 @@
 	let shadowRoot;
 	let callcount = 0;
 
-	let data;
+	//let data;
 	
 	let scriptsLoadPromise;
 
@@ -103,9 +103,7 @@
 				const dataBinding = that.dataBindings.getDataBinding('myDataBinding');
 				return dataBinding.getDataSource().getResultSet();
 			}).then((data_set)=>{
-				let prepared_data = that.dataSetToGoogleData(data_set);
-				console.log(prepared_data);
-				return prepared_data;
+				return that.dataSetToGoogleData(data_set);
 			}).then((prepared_data)=>{
 				GoogleChart(prepared_data);
 			});
