@@ -25,17 +25,12 @@
 		script.addEventListener("load", callback);
 		shadowRoot.appendChild(script);
     }
-
-	//Script loading 
-	function loadScriptByUrl(src) {
-		const script = document.createElement('script');
-		script.type = 'text/javascript';
-		script.src = src;
-		shadowRoot.appendChild(script);
-    }
 	
 	//Google chart rendering
-	function drawChart(data) {
+	function drawChart(data_set) {
+
+		let data = dataSetToGoogleData(data_set);
+
 		if (data && data.getNumberOfRows() !== 0){
 
 			var options = {
@@ -49,8 +44,8 @@
     }
 	
 	//Google Chart 
-    function GoogleChart(prepared_data){
-		google.charts.setOnLoadCallback(function(){ drawChart(prepared_data) });
+    function GoogleChart(data_set){
+		google.charts.setOnLoadCallback(function(){ drawChart(data_set) });
     }
 
 	function dataSetToGoogleData(data_set){
@@ -84,7 +79,10 @@
 			scriptsLoadPromise = new Promise((resolve,reject)=>{
 				loadScript(googleloaderjs, function(){
 					console.log("Load:" + googleloaderjs);
-					resolve("loaded");
+					loadScript(ganttjs, function() {
+						console.log("Load:" + ganttjs);
+						resolve("scripts are loaded");
+					});
 				});
 			});
 
@@ -121,19 +119,11 @@
 			var that = this;
 
 			//sequence of data manipulation and chart rendering steps after all scripts are loaded
-			scriptsLoadPromise
-			.then(() => {
-				google.charts.load('upcoming', {packages: ['corechart']});
-			})
-			.then(() => {
+			scriptsLoadPromise.then(() => {
 				const dataBinding = that.dataBindings.getDataBinding('myDataBinding');
 				return dataBinding.getDataSource().getResultSet();
-			})
-			.then((data_set)=>{
-				return dataSetToGoogleData(data_set);
-			})
-			.then((prepared_data)=>{
-				GoogleChart(prepared_data);
+			}).then((data_set)=>{
+				GoogleChart(data_set);
 			});
 		}
 	}
