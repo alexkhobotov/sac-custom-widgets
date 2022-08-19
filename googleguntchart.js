@@ -4,7 +4,7 @@
 
 	let data;
 	
-	let scriptsLoadPromise = new Promise();
+	let scriptsLoadPromise = new Promise((resolve,reject)=>{});
 
 	let template = document.createElement("template");
 	template.innerHTML = `
