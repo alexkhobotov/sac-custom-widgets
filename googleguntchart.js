@@ -4,7 +4,7 @@
 
 	let data;
 	
-	let scriptsLoadPromise = new Promise((resolve,reject)=>{});
+	let scriptsLoadPromise;
 
 	let template = document.createElement("template");
 	template.innerHTML = `
@@ -63,13 +63,16 @@
 			//create div for google chart
             shadowRoot.appendChild(div);
 
-			loadScript(googleloaderjs, function(){
-				console.log("Load:" + googleloaderjs);
-				loadScript(ganttjs, function() {
-					console.log("Load:" + ganttjs);
-					scriptsLoadPromise.resolve("scripts are loaded");
+			scriptsLoadPromise = new Promise((resolve,reject)=>{
+				loadScript(googleloaderjs, function(){
+					console.log("Load:" + googleloaderjs);
+					loadScript(ganttjs, function() {
+						console.log("Load:" + ganttjs);
+						resolve("scripts are loaded");
+					});
 				});
 			});
+			
 			
 			this.addEventListener("click", event => {
 				var event = new Event("onClick");
